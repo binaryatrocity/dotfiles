@@ -57,6 +57,7 @@ Bundle 'fholgado/minibufexpl.vim.git'
 Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'Lokaltog/vim-distinguished.git'
 Bundle 'scrooloose/nerdtree.git'
+Bundle 'ervandew/supertab.git'
 
 " toggle showing nerd-tree
 :nmap <leader>e :NERDTreeToggle<CR>
