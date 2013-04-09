@@ -1,0 +1,5 @@
+#! /bin/bash
+
+conky | while read -r; do xsetroot -name "$REPLY"; done &
+sh ~/.fehbg &
+exec dwm
