@@ -1,7 +1,7 @@
 #!/bin/bash
 
 dir=~/dotfiles
-files="vimrc tmux.conf conkyrc"
+files="vimrc tmux.conf zshrc conkyrc"
 
 cd $dir
 for file in $files; do
@@ -16,3 +16,7 @@ if [ ! -d ~/.vim/bundle/vundle ]; then
 	vim +BundleInstall +qall
 fi
 
+if [ ! -d ~/.oh-my-zsh ]; then
+    wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
+    chsh -s 'which zsh'
+fi
