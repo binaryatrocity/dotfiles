@@ -1,3 +1,4 @@
+set shell=/bin/bash
 set nocompatible
 set laststatus=2
 set encoding=utf-8
@@ -11,7 +12,7 @@ if has("autocmd")
     filetype indent on
     filetype plugin on
     set ofu=syntaxcomplete#Complete
-    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == \"primary") | q | endif
 endif
 
 " basic options
@@ -19,6 +20,26 @@ syntax on
 set number
 set nowrap
 set autoindent
+
+set backspace=indent,eol,start
+set complete-=i
+set showmatch
+set smarttab
+set incsearch
+
+set ruler
+set showcmd
+set wildmenu
+"set foldmethod=syntax
+"set foldcolumn=1
+
+if !&scrolloff
+    set scrolloff=1
+endif
+if !&sidescrolloff
+    set sidescrolloff=5
+endif
+set display+=lastline
 
 " spaces not tabs, etc
 set tabstop=8
@@ -58,6 +79,7 @@ Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'Lokaltog/vim-distinguished.git'
 Bundle 'scrooloose/nerdtree.git'
 Bundle 'ervandew/supertab.git'
+Bundle 'myusuf3/numbers.vim.git'
 
 " toggle showing nerd-tree
 :nmap <leader>e :NERDTreeToggle<CR>
@@ -65,9 +87,13 @@ Bundle 'ervandew/supertab.git'
 " end tags with a key
 imap ,/ </<C-X><C-O>
 
+" xml validation
+:nmap <leader>; :%w !xmllint --valid --noout -
+
 " toggle line wrap
 :nmap <leader>w :setlocal wrap!<CR>:setlocal wrap?<CR>
 
 " dem fancy colors
-set t_Co=256
-colorscheme distinguished 
+" set t_Co=256
+"colorscheme ir_black  " for macvim
+colorscheme distinguished
