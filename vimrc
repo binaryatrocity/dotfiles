@@ -12,7 +12,6 @@ if has("autocmd")
     filetype indent on
     filetype plugin on
     set ofu=syntaxcomplete#Complete
-    "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == \"primary") | q | endif
 endif
 
 " basic options
