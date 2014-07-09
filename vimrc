@@ -12,7 +12,7 @@ if has("autocmd")
     filetype indent on
     filetype plugin on
     set ofu=syntaxcomplete#Complete
-    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == \"primary") | q | endif
+    "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == \"primary") | q | endif
 endif
 
 " basic options
@@ -94,6 +94,9 @@ imap ,/ </<C-X><C-O>
 :nmap <leader>w :setlocal wrap!<CR>:setlocal wrap?<CR>
 
 " dem fancy colors
-" set t_Co=256
+set t_Co=256
 "colorscheme ir_black  " for macvim
 colorscheme distinguished
+
+" force django templates to use html syntax
+au BufNewFile,BufRead *.djhtml set filetype=html
