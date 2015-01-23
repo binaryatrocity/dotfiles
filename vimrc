@@ -29,8 +29,8 @@ set incsearch
 set ruler
 set showcmd
 set wildmenu
-"set foldmethod=syntax
-"set foldcolumn=1
+set foldmethod=indent
+set foldcolumn=1
 
 if !&scrolloff
     set scrolloff=1
@@ -99,3 +99,6 @@ colorscheme distinguished
 
 " force django templates to use html syntax
 au BufNewFile,BufRead *.djhtml set filetype=html
+
+" sudo save
+cmap w!! w !sudo tee % >/dev/null
