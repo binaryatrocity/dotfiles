@@ -102,3 +102,6 @@ au BufNewFile,BufRead *.djhtml set filetype=html
 
 " sudo save
 cmap w!! w !sudo tee % >/dev/null
+
+" Let's try some mouse stuff
+set mouse=a
