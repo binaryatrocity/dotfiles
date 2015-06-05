@@ -12,11 +12,13 @@ if has("autocmd")
     filetype indent on
     filetype plugin on
     set ofu=syntaxcomplete#Complete
+    autocmd FileType python map <buffer> <leader>8 :call Flake8()<CR>
 endif
 
 " basic options
 syntax on
 set number
+set relativenumber
 set nowrap
 set autoindent
 
@@ -66,22 +68,30 @@ imap <left> <nop>
 imap <right> <nop>
 
 " lets setup vundle
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 call vundle#rc()
 
 " vundle bundles
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " bundles on github
-Bundle 'fholgado/minibufexpl.vim.git'
-Bundle 'Lokaltog/vim-powerline.git'
-Bundle 'Lokaltog/vim-distinguished.git'
-Bundle 'scrooloose/nerdtree.git'
-Bundle 'ervandew/supertab.git'
-Bundle 'myusuf3/numbers.vim.git'
+Plugin 'fholgado/minibufexpl.vim.git'
+Plugin 'Lokaltog/vim-powerline.git'
+Plugin 'Lokaltog/vim-distinguished.git'
+Plugin 'scrooloose/nerdtree.git'
+Plugin 'ervandew/supertab.git'
+Plugin 'myusuf3/numbers.vim.git'
+Plugin 'majutsushi/tagbar.git'
+Plugin 'nvie/vim-flake8.git'
+
+call vundle#end()
+filetype plugin indent on
 
 " toggle showing nerd-tree
 :nmap <leader>e :NERDTreeToggle<CR>
+" toggle showing tagbar
+nmap <leader>r :TagbarToggle<CR>
 
 " end tags with a key
 imap ,/ </<C-X><C-O>
