@@ -43,7 +43,7 @@ endif
 set display+=lastline
 
 " spaces not tabs, etc
-set tabstop=8
+set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
@@ -84,6 +84,8 @@ Plugin 'ervandew/supertab.git'
 Plugin 'myusuf3/numbers.vim.git'
 Plugin 'majutsushi/tagbar.git'
 Plugin 'nvie/vim-flake8.git'
+Plugin 'kien/rainbow_parentheses.vim.git'
+Plugin 'hynek/vim-python-pep8-indent'
 
 call vundle#end()
 filetype plugin indent on
@@ -109,9 +111,19 @@ colorscheme distinguished
 
 " force django templates to use html syntax
 au BufNewFile,BufRead *.djhtml set filetype=html
+au BufNewFile,BufRead *.raml set filetype=yaml
 
 " sudo save
 cmap w!! w !sudo tee % >/dev/null
 
 " Let's try some mouse stuff
 set mouse=a
+
+" Mark the 80th column. PEP8 yo
+set colorcolumn=80
+
+" rainbow parens
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
