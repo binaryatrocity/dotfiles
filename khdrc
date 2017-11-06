@@ -1,0 +1,116 @@
+# enable kwm compatibility mode
+khd kwm on
+
+# suppress unregistered keybinds outside default mode
+# enabled by default! must be explicitly set to 'off'
+khd void_unlisted_bind off
+
+
+# set border color for different modes
+khd mode default color 0xddd5c4a1
+khd mode switcher color 0xddbdd322
+khd mode swap color 0xdd458588
+
+
+# toggle between modes
+ctrl - f                :   khd -e "mode activate switcher"
+switcher + ctrl - f     :   khd -e "mode activate default"
+swap + ctrl - f         :   khd -e "mode activate default"
+ytd + ctrl - f          :   khd -e "mode activate default"
+space + ctrl - f        :   khd -e "mode activate default"
+tree + ctrl - f         :   khd -e "mode activate default"
+info + ctrl -f		:   khd -e "mode activate default"
+
+switcher - a            :   khd -e "mode activate swap"
+#switcher - w            :   khd -e "mode activate ytd"
+#switcher - s            :   khd -e "mode activate space"
+#switcher - d            :   khd -e "mode activate tree"
+#switcher - q            :   khd -e "mode activate info"
+
+
+### MINE
+# i3 style
+lalt - up : kwmc window -f north
+lalt - right : kwmc window -f east
+lalt - down : kwmc window -f south
+lalt - left : kwmc window -f west
+
+# move window
+lalt + shift - up : kwmc window -m north
+lalt + shift - right : kwmc window -m east
+lalt + shift - down : kwmc window -m south
+lalt + shift - left : kwmc window -m west
+
+#Move windows between spaces
+lalt + ctrl - right : kwmc window -m space right;\
+                      kwmc space -fExperimental right
+lalt + ctrl - left : kwmc window -m space left;\
+                      kwmc space -fExperimental left
+
+# Toggle float mode for window
+lalt + cmd - f : kwmc window -t focused
+
+# Toggle tiling modes
+lalt + cmd - a   :   kwmc space -t bsp
+lalt + cmd - s   :   kwmc space -t monocle
+lalt + cmd - d   :   kwmc space -t float
+
+### /MINE
+
+
+# switcher mode
+switcher - r            :   khd -e "reload" # reload config
+
+switcher - h            :   kwmc window -f west
+switcher - l            :   kwmc window -f east
+switcher - j            :   kwmc window -f south
+switcher - k            :   kwmc window -f north
+switcher - n            :   kwmc window -fm prev
+switcher - m            :   kwmc window -fm next
+
+switcher - 1            :   kwmc space -fExperimental 1
+switcher - 2            :   kwmc space -fExperimental 2
+switcher - 3            :   kwmc space -fExperimental 3
+switcher - 4            :   kwmc space -fExperimental 4
+switcher - 5            :   kwmc space -fExperimental 5
+switcher - 6            :   kwmc space -fExperimental 6
+
+switcher - z            :   kwmc space -fExperimental left
+switcher - c            :   kwmc space -fExperimental right
+switcher - f            :   kwmc space -fExperimental previous
+
+switcher + shift - z    :   kwmc window -m space left;\
+                            kwmc space -fExperimental left
+
+switcher + shift - c    :   kwmc window -m space right;\
+                            kwmc space -fExperimental right
+
+switcher + shift - 1    :   kwmc display -f 0
+switcher + shift - 2    :   kwmc display -f 1
+switcher + shift - 3    :   kwmc display -f 2
+
+switcher - return : osascript ~/bin/iterm.scpt
+
+
+# swap mode
+swap - h                :   kwmc window -s west
+swap - j                :   kwmc window -s south
+swap - k                :   kwmc window -s north
+swap - l                :   kwmc window -s east
+swap - m                :   kwmc window -s mark
+
+swap + shift - k        :   kwmc window -m north
+swap + shift - l        :   kwmc window -m east
+swap + shift - j        :   kwmc window -m south
+swap + shift - h        :   kwmc window -m west
+swap + shift - m        :   kwmc window -m mark
+
+swap - 1                :   kwmc window -m space 1
+swap - 2                :   kwmc window -m space 2
+swap - 3                :   kwmc window -m space 3
+swap - 4                :   kwmc window -m space 4
+swap - 5                :   kwmc window -m space 5
+
+swap - z                :   kwmc window -m space left
+swap - c                :   kwmc window -m space right
+
