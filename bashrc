@@ -1,15 +1,8 @@
-export PATH=$HOME/bin:$PATH
 export EDITOR=vim
 set -o vi
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
-
-#export HISTCONTROL='ignoreboth'
-#export HISTFILESIZE=2000000
-#export HISTIGNORE='&:ls:exit'
-#shopt -s histappend
-#set cmdhist
 
 # shopt -s checkwinsize
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -23,8 +16,8 @@ case "$TERM" in
     xterm-color) color_prompt=yes;;
 esac
 # Get our git stuff
-source ~/.git-completion.sh
-source ~/.git-prompt.sh
+source ~/code/dotfiles/git-completion.sh
+source ~/code/dotfiles/git-prompt.sh
 
 force_color_prompt=yes
 
@@ -61,7 +54,6 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]-=[\u@\h]=-\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
     PS1="${BLUE}(${GREEN}${CWD}${BLUE}) ${NORMAL}${HOST}${BRED}${GIT}${NORMAL} [$?${NORMAL}]${GREEN} ${PUID}${NORMAL} "
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
@@ -77,7 +69,7 @@ case "$TERM" in xterm*|rxvt*)
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls -X --color=auto'
+    alias ls='ls -CFX --color=auto'
     #alias dir='dir --color=auto' alias vdir='vdir --color=auto'
 
     alias grep='grep --color=auto'
@@ -93,21 +85,11 @@ alias l='ls -CF'
 #mah aliases, son
 alias atr0phy='ssh br4n@atr0phy.net'
 alias at0rphy='ssh -L 9050:127.0.0.1:9050 br4n@atr0phy.net'
-alias evoluent='xinput --set-button-map 12 3 1 1 4 5 7 8 9 0 10 11'
-alias cloudme='cd ~/Code/django-cloud/corvisacloud && source ~/Code/django-cloud/bin/activate'
-alias paybackme='cd ~/Code/payback && source ~/Code/payback/bin/activate'
-alias pb='python -m payback'
-alias wallaceme='cd ~/Code/wallace-io/ && node server.js -e ~/Code/wallace-sites -b redis'
-alias zeusme='cd ~/Code/zeus2 && source ~/Code/zeus2/bin/activate && ./start_zeus.sh' 
+alias evoluent='xinput --set-button-map 14 3 1 1 4 5 7 8 9 0 10 11'
 alias cls='clear && ls -X --color=auto'
-alias ack="~/bin/ack"
-alias ackpy="~/bin/ack -r --python --ignore-dir migrations"
-alias pbtest="py.test -v -c conf/pytest-integration.ini"
-alias pbtestdbg="py.test -sv -c conf/pytest-integration.ini"
-alias pbdroptestdb="su postgres -c 'dropdb test_payback'"
-alias notes="vim ~/Documents/Notes.txt"
-alias pgwatch="tail -f /var/log/postgresql/postgresql-9.4-main.log | ccze -A"
-alias postman="/opt/google/chrome/google-chrome \"--profile-directory=Profile 1\" --app-id=fhbjgbiflinjbdggehcddcbncdddomop"
+alias notes="vim +VimwikiIndex"
+alias tmpvim="vim /tmp/$(uuid)"
+alias snip="scrot -s ~/Documents/screenshots/%b%d-%H:%M.png"
 
 # Add an "alert" alias for long running commands. Use like so:
 # sleep 10; alert
@@ -180,3 +162,7 @@ alias cbhs="cat $HISTFILE | tail -n 1 | cb"
 
 # ASCII ART GOODNESS
 echo -e "$(<~/.motd)"
+
+# Search command history
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
