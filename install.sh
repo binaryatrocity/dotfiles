@@ -9,6 +9,6 @@ for file in $files; do
 done
 
 if [ ! -d ~/.vim/bundle/vundle ]; then
-	git clone https://github.com/gmarik/vundle.git  ~/.vim/bundle/vundle
-	vim +BundleInstall +qall
+	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/vundle
+	vim +PluginInstall +qall
 fi
