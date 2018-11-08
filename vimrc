@@ -6,7 +6,7 @@ set laststatus=2                  " always show a status-bar
 set encoding=utf-8                " always be unicode-ing
 set hidden                        " hide abandoned buffers, don't close
 set mouse=a                       " enable mouse support everywhere
-set vb
+set visualbell
 set t_vb=
 
 
@@ -98,10 +98,6 @@ nnoremap <leader><space> :nohlsearch<CR>
 
 " highlight last inserted text
 nnoremap gV `[v`]
-
-" show invisible characters
-nmap <leader>l :set list!<CR>
-set listchars=tab:▸\ ,eol:¬
 
 " don't be a noob - disable arrow keys everywhere
 map <up> <nop>
